@@ -33,7 +33,7 @@ $statuses = ['none' => "Select status", 'station' => "ARRIVED AT STATION", 'hold
                    foreach($trackings as $t)
                    {
                      $tu = url('tracking')."?xf=".$t['tnum'];
-                     $ru = url('remove-tracking')."?xf=".$t['tnum'];
+                     $ru = url('remove-tracking')."?tnum=".$t['tnum'];
                      $shipper = $t['shipper'];
                      $receiver = $t['receiver'];
                   ?>

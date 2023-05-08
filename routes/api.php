@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', [MainController::class,'getIndex']);
-Route::post('apply', [MainController::class,'postApply']);
-Route::get('xxx', [MainController::class,'getResumes']);
-Route::get('yyy', [MainController::class,'getRemoveResume']);
+Route::get('xxx', [AdminController::class,'getTrackings']);

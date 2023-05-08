@@ -14,7 +14,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') | MSC Global Shipping Company</title>
+    <title><?php echo $__env->yieldContent('title'); ?> | MSC Global Shipping Company</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
@@ -28,7 +28,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
     <link rel="stylesheet" href="css/responsive.css" type="text/css" /><!-- Responsive -->		
     <link rel="stylesheet" href="css/colors/color.css" type="text/css" /><!-- Color -->	
     <link rel="stylesheet" href="layerslider/css/layerslider.css" type="text/css"><!-- Layer Slider -->
-    <link rel="stylesheet" href="css/custom.css?ver={{rand(12454494,2237347438)}}" type="text/css"><!-- Custom style -->
+    <link rel="stylesheet" href="css/custom.css?ver=<?php echo e(rand(12454494,2237347438)); ?>" type="text/css"><!-- Custom style -->
 
     <!--SweetAlert CSS--> 
     <link href="lib/sweet-alert/sweetalert2.css" rel="stylesheet">
@@ -56,11 +56,11 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                         </div>
                         <div class="extra-links">
                             <a itemprop="url" href="#" title="">Support</a>   /  
-                             @if($user == null)
+                             <?php if($user == null): ?>
                                <a itemprop="url" href="#" title="" class="popup1">Sign In</a>
-                             @else
-                             &nbsp;Hi {{$user->fname}}, <a itemprop="url" href="{{url('dashboard')}}" title="" class="">Dashboard</a> | <a itemprop="url" href="{{url('bye')}}" title="" class="">Sign out</a>
-                             @endif
+                             <?php else: ?>
+                             &nbsp;Hi <?php echo e($user->fname); ?>, <a itemprop="url" href="<?php echo e(url('dashboard')); ?>" title="" class="">Dashboard</a> | <a itemprop="url" href="<?php echo e(url('bye')); ?>" title="" class="">Sign out</a>
+                             <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
             <div class="logo-menu-sec">
                 <div class="logo-menu">
                     <div class="logo">
-                        <a itemprop="url" href="{{url('/')}}" title=""><img itemprop="image" src="images/logo.jpeg" width='50' height='50' class="logooo" alt="" /></a>
+                        <a itemprop="url" href="<?php echo e(url('/')); ?>" title=""><img itemprop="image" src="images/logo.jpeg" width='50' height='50' class="logooo" alt="" /></a>
                     </div>
                     <div class="quick-contact">
                         <ul>
@@ -90,14 +90,14 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                 </div>
                 <nav class="menu-curve">
                     <ul>
-                      <li><a itemprop="url" href="{{url('/')}}" title="">Home</a></li>
+                      <li><a itemprop="url" href="<?php echo e(url('/')); ?>" title="">Home</a></li>
                       <li class="menu-item-has-children"><a itemprop="url" href="#" title="">Know More</a>
                             <ul>
-                                <li><a itemprop="url" href="{{url('about')}}" title="">About Us</a></li>
-                                <li><a itemprop="url" href="{{url('why-us')}}" title="">What Makes Us Different</a></li>
+                                <li><a itemprop="url" href="<?php echo e(url('about')); ?>" title="">About Us</a></li>
+                                <li><a itemprop="url" href="<?php echo e(url('why-us')); ?>" title="">What Makes Us Different</a></li>
                             </ul>
                       </li>
-                      <li><a itemprop="url" href="{{url('contact')}}" title="">Contact Us</a></li>
+                      <li><a itemprop="url" href="<?php echo e(url('contact')); ?>" title="">Contact Us</a></li>
                     </ul>
                 </nav>
             </div><!-- Logo Menu Sec -->
@@ -141,7 +141,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                 <div class="container">
                     <div class="responsive-logo">
                         <div class="logo">
-                            <a itemprop="url" href="{{url('/')}}" title=""><img itemprop="image" src="images/logo.jpeg" width='50' height='50' alt="" /></a>
+                            <a itemprop="url" href="<?php echo e(url('/')); ?>" title=""><img itemprop="image" src="images/logo.jpeg" width='50' height='50' alt="" /></a>
                         </div>
                     </div>
                     <span class="responsive-btn"><i class="fa fa-list"></i></span>
@@ -152,22 +152,22 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                             <li><i class="fa fa-paper-plane"></i><a itemprop="url" href="#" title="" class="popup2">TRACK A SHIPMENT</a></li>
                         </ul>
                         <ul>
-                         <li><a itemprop="url" href="{{url('/')}}" title="">Home</a></li>
+                         <li><a itemprop="url" href="<?php echo e(url('/')); ?>" title="">Home</a></li>
                          <li class="menu-item-has-children"><a itemprop="url" href="#" title=""></a>
                             <ul>
-                                <li><a itemprop="url" href="{{url('about')}}" title="">About Us</a></li>
-                                <li><a itemprop="url" href="{{url('why-us')}}" title="">What Makes Us Different</a></li>
+                                <li><a itemprop="url" href="<?php echo e(url('about')); ?>" title="">About Us</a></li>
+                                <li><a itemprop="url" href="<?php echo e(url('why-us')); ?>" title="">What Makes Us Different</a></li>
                             </ul>
                          </li>
                         
-                         <li><a itemprop="url" href="{{url('contact')}}" title="">Contact Us</a></li>
+                         <li><a itemprop="url" href="<?php echo e(url('contact')); ?>" title="">Contact Us</a></li>
                        </ul>
                     </div><!-- Responsive Menu -->
                 </div>
             </div>
         </div><!--Responsive header-->
 
-        @if($user == null)
+        <?php if($user == null): ?>
         <div id="signup-popup">
             <div class="region2"  id="signup">
                 <div class="modal-dialog1">
@@ -183,8 +183,9 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                                                 <h3>Sign In Now</h3>
                                             </div>
                                             <p>Acess your account (staff and admin)</p>
-                                            <form id="login-form" method="post" action="{{url('login')}}">
-                                                {!! csrf_field() !!}
+                                            <form id="login-form" method="post" action="<?php echo e(url('login')); ?>">
+                                                <?php echo csrf_field(); ?>
+
                                                 <label>
                                                     <i class="fa fa-user"></i>
                                                     <input type="text" id="login-email" name="email" class="text-field" placeholder="Email address">
@@ -208,7 +209,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                                             </form>
                                         </div><!-- Sign In -->
                                     </div>
-                                    @if(isset($xx))
+                                    <?php if(isset($xx)): ?>
                                     <div class="col-md-12" id="signup-div">
                                         <div class="sign-in banner-detail1 si">
                                             <div class="heading2">
@@ -216,8 +217,9 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                                                 <h3>Sign Up</h3>
                                             </div>
                                             <p>Create a new account (for staff and admin)</p>
-                                            <form id="signup-form" method="post" action="{{url('signup')}}">
-                                                {!! csrf_field() !!}
+                                            <form id="signup-form" method="post" action="<?php echo e(url('signup')); ?>">
+                                                <?php echo csrf_field(); ?>
+
                                                 <label>
                                                     <input type="text" class="text-field" id="signup-fname" name="fname" placeholder="First Name" required>
                                                 </label>
@@ -246,7 +248,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                                             </form>
                                         </div><!-- Sign Up -->
                                     </div>
-                                    @endif
+                                    <?php endif; ?>
                                 </div>
                             </div><!-- Signup Form -->
                         </div>
@@ -254,7 +256,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                 </div>
             </div>
         </div><!-- Signup Popup -->
-        @endif
+        <?php endif; ?>
 
         <div id="calculate-form-popup">
             <div class="calculate-form-popup">
@@ -297,14 +299,14 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
         </div>
 			
 					 
-		  @yield('slider')
+		  <?php echo $__env->yieldContent('slider'); ?>
 		  
 		  <!--------- Input errors -------------->
-                    @if (count($errors) > 0)
-                          @include('input-errors', ['errors'=>$errors])
-                     @endif 
+                    <?php if(count($errors) > 0): ?>
+                          <?php echo $__env->make('input-errors', ['errors'=>$errors], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                     <?php endif; ?> 
 		  
-		  @yield('content')
+		  <?php echo $__env->yieldContent('content'); ?>
 		  
       <footer>
             <section class="block">
@@ -317,7 +319,7 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                                     <div class="widget">
                                         <div class="about-widget">
                                             <div class="logo">
-                                                <a itemprop="url" href="{{url('/')}}" title=""><img itemprop="image" src="images/logo.jpeg" class="logoo" alt="" /></a>
+                                                <a itemprop="url" href="<?php echo e(url('/')); ?>" title=""><img itemprop="image" src="images/logo.jpeg" class="logoo" alt="" /></a>
                                             </div>
                                             <p itemprop="description">Vestibulum id ligula porta felis euismod sem per. Aenean eu leo quam. Pellen tesque orn are sem lacinia quam venenatis. Fusce dap ibus, tellus ac cursus commodo ut fermentu massa. mentum sit amet risus.</p>
                                             <ul class="social-btn">
@@ -338,8 +340,8 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                                                 </div>
                                                 <div class="links-widget">
                                                     <ul>
-                                                        <li><a itemprop="url" href="{{url('about')}}" title="">About Us</a></li>
-                                                        <li><a itemprop="url" href="{{url('why-us')}}" title="">What Makes us Different</a></li>
+                                                        <li><a itemprop="url" href="<?php echo e(url('about')); ?>" title="">About Us</a></li>
+                                                        <li><a itemprop="url" href="<?php echo e(url('why-us')); ?>" title="">What Makes us Different</a></li>
                                                     </ul>
                                                 </div>
                                             </div><!-- Widget -->
@@ -352,11 +354,11 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                                                 </div>
                                                 <div class="links-widget">
                                                     <ul>
-                                                        <li><a itemprop="url" href="{{$void}}" title="">Ground Transport</a></li>
-                                                        <li><a itemprop="url" href="{{$void}}" title="">Cargo</a></li>
-                                                        <li><a itemprop="url" href="{{$void}}" title="">Warehousing</a></li>
-                                                        <li><a itemprop="url" href="{{$void}}" title="">Logistic Service</a></li>
-                                                        <li><a itemprop="url" href="{{$void}}" title="">Trucking Service</a></li>
+                                                        <li><a itemprop="url" href="<?php echo e($void); ?>" title="">Ground Transport</a></li>
+                                                        <li><a itemprop="url" href="<?php echo e($void); ?>" title="">Cargo</a></li>
+                                                        <li><a itemprop="url" href="<?php echo e($void); ?>" title="">Warehousing</a></li>
+                                                        <li><a itemprop="url" href="<?php echo e($void); ?>" title="">Logistic Service</a></li>
+                                                        <li><a itemprop="url" href="<?php echo e($void); ?>" title="">Trucking Service</a></li>
                                                     </ul>
                                                 </div>
                                             </div><!-- Widget -->
@@ -387,13 +389,13 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 column">
-                            <span>&copy; {{date("Y")}} <a itemprop="url" title="" href="{{url('/')}}">DSG Couriers</a> - All Rights Reserved</span>
+                            <span>&copy; <?php echo e(date("Y")); ?> <a itemprop="url" title="" href="<?php echo e(url('/')); ?>">DSG Couriers</a> - All Rights Reserved</span>
                         </div>
                         <div class="col-md-6 column">
                             <ul>
-                                <li><a itemprop="url" href="{{url('/')}}" title="">HOME</a></li>
-                                <li><a itemprop="url" href="{{url('about')}}" title="">ABOUT US</a></li>
-                                <li><a itemprop="url" href="{{url('contact')}}" title="">CONTACT US</a></li>
+                                <li><a itemprop="url" href="<?php echo e(url('/')); ?>" title="">HOME</a></li>
+                                <li><a itemprop="url" href="<?php echo e(url('about')); ?>" title="">ABOUT US</a></li>
+                                <li><a itemprop="url" href="<?php echo e(url('contact')); ?>" title="">CONTACT US</a></li>
                             </ul>
                         </div>
                     </div>
@@ -441,15 +443,15 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
 <script src="layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="js/script.js"></script>
-<script src="js/mmm.js?ver={{rand(12454494,2237347438)}}"></script>
-<script src="js/helpers.js?ver={{rand(12454494,2237347438)}}"></script>
+<script src="js/mmm.js?ver=<?php echo e(rand(12454494,2237347438)); ?>"></script>
+<script src="js/helpers.js?ver=<?php echo e(rand(12454494,2237347438)); ?>"></script>
 <!--SweetAlert JS--> 
 <script src="lib/sweet-alert/sweetalert2.js"></script>
 
 <!--Datatables JS--> 
 <script src="lib/datatables/datatables.min.js"></script>
 
-@yield('scripts')
+<?php echo $__env->yieldContent('scripts'); ?>
 
  <!--------- Session notifications-------------->
  <?php
@@ -468,22 +470,23 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
               
              ?> 
 
-                 @if($pop != "" && $val != "")
-                   @include('session-status',['pop' => $pop, 'val' => $val])
-                 @endif
+                 <?php if($pop != "" && $val != ""): ?>
+                   <?php echo $__env->make('session-status',['pop' => $pop, 'val' => $val], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                 <?php endif; ?>
 
-@if($user == null)
+<?php if($user == null): ?>
 <!--------- Plugins: DO NOT EDIT ------>
 <?php
 foreach($plugins as $p)
 {
 ?>
-{!! $p['value'] !!}
+<?php echo $p['value']; ?>
+
 <?php
 }
 ?>
 <!------------------------------------->
-@endif
+<?php endif; ?>
 
 <script>
     $(document).ready(function () {
@@ -556,3 +559,4 @@ foreach($plugins as $p)
 </script>
 </body>
 </html>
+<?php /**PATH /Users/mac/repos/msc-couriers/resources/views/layout.blade.php ENDPATH**/ ?>

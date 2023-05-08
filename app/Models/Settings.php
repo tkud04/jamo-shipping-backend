@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Resumes extends Model
+class Settings extends Model
 {
 
     /**
@@ -13,9 +13,6 @@ class Resumes extends Model
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name' , 'email',
-        'phone', 'address' , 'city',
-        'zip_code', 'pic' , 'status'
+        'name', 'value','status'
     ];
-    
 }

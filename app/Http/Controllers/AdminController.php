@@ -145,25 +145,10 @@ class AdminController extends Controller {
 	public function getTrackings()
     {
        $user = null;
-
-		if(Auth::check())
-		{
-			$user = Auth::user();
-            if($user->role !== "admin")
-            {
-                return redirect()->intended('/');
-            }
-		}
-        else
-        {
-            return redirect()->intended('/');
-        }
-
-		
 		$signals = $this->helpers->signals;
         $trackings = $this->helpers->getTrackings(['mode' => "all"]);
-		#dd($trackings);
-       return view('trackings',compact(['user','signals','trackings']));
+		$ret = ['status' => 'ok','data' => $trackings];
+		return json_encode($ret);
     }
 
 	/**
@@ -379,7 +364,7 @@ class AdminController extends Controller {
         $req = $request->all();
 		#dd($req);
         $validator = Validator::make($req, [
-                             'xf' => 'required'
+                             'tnum' => 'required'
          ]);
          
          if($validator->fails())
@@ -391,7 +376,6 @@ class AdminController extends Controller {
          
          else
          {
-			 $req['tnum'] = $req['xf'];
              $ret = $this->helpers->removeTracking($req);
 			 
 	        session()->flash("remove-tracking-status","ok");

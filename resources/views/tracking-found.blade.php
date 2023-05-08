@@ -82,7 +82,8 @@
                                            <dd class="col-md-9">{{$receiver['phone']}}</dd>
                                            <dt class="col-md-3 mb-3">Receiver address</dt>
                                            <dd class="col-md-9 mb-3">{{$receiver['address']}}</dd>
-
+                                           <dt class="col-md-3 mb-3">Description</dt>
+                                           <dd class="col-md-9 mb-3">{{$t['description']}}</dd>                                           
                                            <dt class="col-md-3">Tracking #</dt>
                                            <dd class="col-md-9">{{$t['tnum']}}</dd>
                                           

@@ -1,11 +1,11 @@
 <?php
 $void = 'javascript:void(0)';
 ?>
-@extends('layout')
 
-@section('title',"Welcome")
 
-@section('content')
+<?php $__env->startSection('title',"Welcome"); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="main-slider overlape">
             <div id="full-slider-wrapper">
                 <div id="layerslider" style="width:100%; height:696px; ">
@@ -23,7 +23,7 @@ $void = 'javascript:void(0)';
 
                         <div class="ls-slide" style="line-height:28px; font-family:lato; font-size:15px; color:#ffffff; top:445px; left:100px;" data-ls="offsetxout:left; offsetxin:right; durationin:1300; delayin:1200; easingin:easeOutBack; fadein:false; easingout:easeInBack; fadeout:false;">We are a multinational conglomerate holding company<br/> focused on transportation, e-commerce and services</div>
 
-                        <a href="{{url('about')}}" itemprop="url" title="" class="ls-slide slide-icon" style="padding:16px 45px; background:#ffb400; color:#ffffff; font-size:12px; top:539px; left:100px;" data-ls="offsetxout:left; offsetyin:bottom; durationin:1500; delayin:1300; easingin:easeOutBack; fadein:false; easingout:easeInBack; fadeout:false;">ABOUT US</a>
+                        <a href="<?php echo e(url('about')); ?>" itemprop="url" title="" class="ls-slide slide-icon" style="padding:16px 45px; background:#ffb400; color:#ffffff; font-size:12px; top:539px; left:100px;" data-ls="offsetxout:left; offsetyin:bottom; durationin:1500; delayin:1300; easingin:easeOutBack; fadein:false; easingout:easeInBack; fadeout:false;">ABOUT US</a>
 
                         <img src="images/resource/slide-model.png" alt="" itemprop="image" class="ls-slide" style="top:0; left:540px;" data-ls="offsetyout:top; offsetyin:bottom; durationin:2000; delayin:1500; easingin:easeOutBack; fadein:false; easingout:easeInBack; fadeout:false;" />
                     </div><!-- Slide 1 -->
@@ -52,7 +52,7 @@ $void = 'javascript:void(0)';
 
                         <div class="ls-slide" style="top:425px; left:0;line-height:28px; font-family:lato; font-size:15px; color:#ffffff;" data-ls="offsetxout:left; offsetxin:right; durationin:1500; delayin:700; easingin:easeOutBack; fadein:false; easingout:easeInBack; fadeout:false;">We have a broad portfolio of products and solutions to meet your logistics requirements <br/>everything from simple shipping and transportation to transformative solutions that span the supply chain.</div>
 
-                        <a href="{{url('about')}}" itemprop="url" title="" class="ls-slide slide-btn slide-icon" style="top:515px; left:0; text-transform:uppercase; padding:16px 40px; color:#ffb400; border:2px solid #ffb400; font-family:raleway; font-size:13px; font-weight:700;" data-ls="offsetxout:left; offsetyin:bottom; durationin:1700; delayin:1000; easingin:easeOutBack; fadein:false; easingout:easeInBack; fadeout:false;">CALCULATE PACKAGE</a>
+                        <a href="<?php echo e(url('about')); ?>" itemprop="url" title="" class="ls-slide slide-btn slide-icon" style="top:515px; left:0; text-transform:uppercase; padding:16px 40px; color:#ffb400; border:2px solid #ffb400; font-family:raleway; font-size:13px; font-weight:700;" data-ls="offsetxout:left; offsetyin:bottom; durationin:1700; delayin:1000; easingin:easeOutBack; fadein:false; easingout:easeInBack; fadeout:false;">CALCULATE PACKAGE</a>
                     </div><!-- Slide 3 -->
                 </div>
             </div>
@@ -156,7 +156,7 @@ $void = 'javascript:void(0)';
                                                 </div>
                                             </div>
                                         </div>
-                                        <a class="theme-btn dark" href="{{url('about')}}" title=""><i class="fa fa-paper-plane"></i>  about unload</a>
+                                        <a class="theme-btn dark" href="<?php echo e(url('about')); ?>" title=""><i class="fa fa-paper-plane"></i>  about unload</a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -520,4 +520,6 @@ $void = 'javascript:void(0)';
                 </div>
             </div>
         </section>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/mac/repos/msc-couriers/resources/views/index.blade.php ENDPATH**/ ?>
