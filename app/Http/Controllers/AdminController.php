@@ -58,37 +58,22 @@ class AdminController extends Controller {
 	 */
 	public function getTrackingHistory(Request $request)
     {
-       $user = null;
+		$ret = ['status' => 'ok','mesage' => 'nothing happened'];
 
-	   if(Auth::check())
-	   {
-		   $user = Auth::user();
-		   if($user->role !== "admin")
-		   {
-			   return redirect()->intended('/');
-		   }
-	   }
-	   else
-	   {
-		   return redirect()->intended('/');
-	   }
 
 		$req = $request->all();
         $t = []; $valid = false;
 
         if(isset($req['tnum'])){
            $history = $this->helpers->getTrackingHistory($req['tnum']);
+		   $ret = ['status' => 'ok','data' => $history];
         }
 		else
 		{
-			session()->flash("track-status","error");
-			return redirect()->intended('/');
+			$ret = ['status' => 'error','mesage' => 'validation'];
 		}
 
-        $signals = $this->helpers->signals;
-        $tnum = $req['tnum'];
-		#dd($history);
-    	return view('tracking-history',compact(['user','history','tnum','valid','signals']));
+       return json_encode($ret);
     }
 
 	/**
@@ -98,18 +83,7 @@ class AdminController extends Controller {
 	 */
     public function postAddTrackingHistory(Request $request)
     {
-    	if(Auth::check())
-		{
-			$user = Auth::user();
-            if($user->role !== "admin")
-            {
-                return redirect()->intended('/');
-            }
-		}
-        else
-        {
-            return redirect()->intended('/');
-        }
+    	$ret = ['status' => 'ok','mesage' => 'nothing happened'];
         
         $req = $request->all();
 		#dd($req);
@@ -122,18 +96,16 @@ class AdminController extends Controller {
          
          if($validator->fails())
          {
-             $messages = $validator->messages();
-             return redirect()->back()->withInput()->with('errors',$messages);
-             //dd($messages);
+            $ret = ['status' => 'error','mesage' => 'validation'];
          }
          
          else
          {
-             $ret = $this->helpers->addTrackingHistory($req);
-			 
-	        session()->flash("update-tracking-status","ok");
-			return redirect()->intended('tracking-history?tnum='.$req['tnum']);
+             $ret2 = $this->helpers->addTrackingHistory($req);
+			 $ret = ['status' => 'ok','mesage' => 'tracking history added'];
          } 	  
+
+		 return json_encode($ret);
     }
 
 
@@ -184,18 +156,7 @@ class AdminController extends Controller {
 	 */
     public function postAddTracking(Request $request)
     {
-    	if(Auth::check())
-		{
-			$user = Auth::user();
-            if($user->role !== "admin")
-            {
-                return redirect()->intended('/');
-            }
-		}
-        else
-        {
-            return redirect()->intended('/');
-        }
+		$ret = ['status' => 'ok','mesage' => 'nothing happened'];
         
         $req = $request->all();
 		#dd($req);
@@ -220,8 +181,7 @@ class AdminController extends Controller {
          
          if($validator->fails())
          {
-             $messages = $validator->messages();
-             return redirect()->back()->withInput()->with('errors',$messages);
+             $ret = ['status' => 'error','mesage' => 'validation','req' => $req];
              //dd($messages);
          }
          
@@ -235,9 +195,9 @@ class AdminController extends Controller {
 			 $this->helpers->addShipper($s);
 			 $this->helpers->addReceiver($r);
 			 
-	        session()->flash("new-tracking-status","ok");
-			return redirect()->intended('trackings');
-         } 	  
+	         $ret = ['status' => 'ok','mesage' => 'tracking added'];
+         }
+		 return json_encode($ret); 	  
     }
 
 	/**
@@ -250,37 +210,23 @@ class AdminController extends Controller {
        $user = null;
 	   $signals = $this->helpers->signals;
 	   $req = $request->all();
+	   $ret = ['status' => 'ok','mesage' => 'nothing happened','req' => $req];
 
-	   if(Auth::check())
-	   {
-		   $user = Auth::user();
-		   if($user->role !== "admin")
-		   {
-			   return redirect()->intended('/');
-		   }
-	   }
-	   else
-	   {
-		   return redirect()->intended('/');
-	   }
+	   
 
 		if(isset($req['xf']))
 		{
 			$t = $this->helpers->getTracking($req['xf'],['mode' => "all",'rawDate' => true]);
-
-			if(count($t) < 1)
-			{
-				session()->flash("tracking-status","error");
-			    return redirect()->intended('trackings');
-			}
+            
+			$ret = ['status' => 'ok','data' => $t];
+			
 		}
 		else
 		{
-			session()->flash("tracking-status","error");
-			return redirect()->intended('trackings');
+			$ret = ['status' => 'error','mesage' => 'validation'];
 		}
 
-    	return view('edit-tracking',compact(['user','signals','t']));
+    	return json_encode($ret);
     }
 
 
@@ -291,18 +237,7 @@ class AdminController extends Controller {
 	 */
     public function postTracking(Request $request)
     {
-    	if(Auth::check())
-		{
-			$user = Auth::user();
-            if($user->role !== "admin")
-            {
-                return redirect()->intended('/');
-            }
-		}
-        else
-        {
-            return redirect()->intended('/');
-        }
+		$ret = ['status' => 'ok','mesage' => 'nothing happened'];
         
         $req = $request->all();
 		#dd($req);
@@ -328,17 +263,16 @@ class AdminController extends Controller {
          
          if($validator->fails())
          {
-             $messages = $validator->messages();
-             return redirect()->back()->withInput()->with('errors',$messages);
-             //dd($messages);
+			$ret = ['status' => 'error','mesage' => 'validation'];
          }
          
          else
          {
              $ret = $this->helpers->addTracking($req);
-             session()->flash("edit-tracking-status","ok");
-			return redirect()->intended('trackings');
-         } 	  
+             $ret = ['status' => 'ok','mesage' => 'tracking added'];
+         } 	
+		 
+		 return json_encode($ret);
     }
 
 	/**
@@ -348,18 +282,7 @@ class AdminController extends Controller {
 	 */
     public function getRemoveTracking(Request $request)
     {
-    	if(Auth::check())
-		{
-			$user = Auth::user();
-            if($user->role !== "admin")
-            {
-                return redirect()->intended('/');
-            }
-		}
-        else
-        {
-            return redirect()->intended('/');
-        }
+		$ret = ['status' => 'ok','mesage' => 'nothing happened'];
         
         $req = $request->all();
 		#dd($req);
@@ -369,18 +292,16 @@ class AdminController extends Controller {
          
          if($validator->fails())
          {
-             $messages = $validator->messages();
-             return redirect()->back()->withInput()->with('errors',$messages);
-             //dd($messages);
+			$ret = ['status' => 'error','mesage' => 'validation'];
          }
          
          else
          {
              $ret = $this->helpers->removeTracking($req);
 			 
-	        session()->flash("remove-tracking-status","ok");
-			return redirect()->intended('trackings');
-         } 	  
+	         $ret = ['status' => 'ok','mesage' => 'tracking removed'];
+         } 	 
+		 return json_encode($ret); 
     }
 
 	 /**

@@ -59,22 +59,17 @@ class MainController extends Controller {
     {
        $user = null;
 
-		if(Auth::check())
-		{
-			$user = Auth::user();
-		}
+	   $ret = ['status' => 'ok','mesage' => 'nothing happened'];
 
 		$req = $request->all();
         $result = []; $valid = false;
 
         if(isset($req['tnum'])){
            $result = $this->helpers->track($req['tnum'],['mode' => "all"]);
+		   $ret = ['status' => 'ok','data' => $result];
         }
-        $signals = $this->helpers->signals;
-		$plugins = $this->helpers->getPlugins();
-        #dd($result);
-		if(!isset($result['tracking']) || count($result['tracking']) > 0) $valid = true;
-    	return view('track',compact(['user','result','valid','signals','plugins']));
+       
+		return json_encode($ret);
     }
 
 
